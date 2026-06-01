@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="560" height="360" viewBox="0 0 560 360">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2965f1"/>
+      <stop offset="100%" stop-color="#1a4bd6"/>
+    </linearGradient>
+    <linearGradient id="shine" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.15)"/>
+      <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+    </linearGradient>
+  </defs>
+  <rect width="560" height="360" fill="url(#bg)"/>
+  <rect width="560" height="360" fill="url(#shine)"/>
+  <!-- grid pattern -->
+  <g opacity="0.3" stroke="#fff" stroke-width="1">
+    <line x1="80" y1="60" x2="80" y2="300"/>
+    <line x1="160" y1="60" x2="160" y2="300"/>
+    <line x1="240" y1="60" x2="240" y2="300"/>
+    <line x1="320" y1="60" x2="320" y2="300"/>
+    <line x1="400" y1="60" x2="400" y2="300"/>
+    <line x1="480" y1="60" x2="480" y2="300"/>
+    <line x1="80" y1="60" x2="480" y2="60"/>
+    <line x1="80" y1="120" x2="480" y2="120"/>
+    <line x1="80" y1="180" x2="480" y2="180"/>
+    <line x1="80" y1="240" x2="480" y2="240"/>
+    <line x1="80" y1="300" x2="480" y2="300"/>
+  </g>
+  <!-- highlighted grid area -->
+  <rect x="160" y="120" width="160" height="120" fill="rgba(255,255,255,0.15)" rx="4"/>
+  <rect x="320" y="60" width="160" height="180" fill="rgba(255,255,255,0.1)" rx="4"/>
+  <!-- text -->
+  <text x="280" y="310" text-anchor="middle" font-family="monospace" font-size="18" fill="rgba(255,255,255,0.9)">CSS Grid</text>
+  <text x="280" y="340" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="rgba(255,255,255,0.7)">Grid Layout 二维布局</text>
+</svg>

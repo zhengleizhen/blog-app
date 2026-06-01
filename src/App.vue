@@ -1,136 +1,123 @@
 <script setup>
-import { ref } from 'vue'
+import { RouterLink, RouterView, useRoute } from 'vue-router'
 
-// 文章数据（目前是硬编码，后续章节会改成 fetch 加载）
-const articles = ref([
-  {
-    id: 1,
-    title: 'Vue3 入门完全指南',
-    summary: '从零开始学习 Vue3 组合式 API，涵盖 ref、reactive、computed 等核心概念。',
-    date: '2026-05-10',
-    category: 'Vue',
-    cover: '/images/vue.png'
-  },
-  {
-    id: 2,
-    title: 'JavaScript 异步编程详解',
-    summary: '一文搞懂 Promise、async/await、事件循环与微任务队列。',
-    date: '2026-05-08',
-    category: 'JavaScript',
-    cover: '/images/js.png'
-  },
-  {
-    id: 3,
-    title: 'CSS Grid 布局实战',
-    summary: '用 CSS Grid 轻松实现复杂的响应式布局。',
-    date: '2026-05-05',
-    category: 'CSS',
-    cover: '/images/css.png'
-  }
-])
+const route = useRoute()
+
+const isActive = (path) => {
+  if (path === '/') return route.path === '/'
+  return route.path.startsWith(path)
+}
 </script>
 
 <template>
-  <div class="home">
-    <h2 class="section-title">最新文章</h2>
-
-    <!-- 加载中 -->
-    <p v-if="!articles.length" class="empty-tip">还没有文章，敬请期待。</p>
-
-    <!-- 文章卡片列表 -->
-    <div v-else class="article-grid">
-      <div
-        v-for="article in articles"
-        :key="article.id"
-        class="article-card"
-      >
-        <img :src="article.cover" :alt="article.title" class="card-cover">
-        <div class="card-content">
-          <span class="card-category">{{ article.category }}</span>
-          <h3 class="card-title">{{ article.title }}</h3>
-          <p class="card-summary">{{ article.summary }}</p>
-          <span class="card-date">{{ article.date }}</span>
-        </div>
+  <div class="app">
+    <!-- 顶部导航栏 -->
+    <header class="header">
+      <div class="header-inner">
+        <RouterLink to="/" class="logo">我的博客</RouterLink>
+        <nav class="nav">
+          <RouterLink to="/" :class="{ active: isActive('/') }">首页</RouterLink>
+          <RouterLink to="/about" :class="{ active: isActive('/about') }">关于</RouterLink>
+        </nav>
       </div>
-    </div>
+    </header>
+
+    <!-- 页面内容 -->
+    <main class="main">
+      <RouterView />
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+      <p>&copy; 2026 我的博客 &middot; Powered by Vue</p>
+    </footer>
   </div>
 </template>
 
-<style scoped>
-.home {
-  max-width: 960px;
-  margin: 0 auto;
-  padding: 20px;
+<style>
+/* 全局样式 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.section-title {
-  font-size: 24px;
-  margin-bottom: 20px;
+body {
+  background: #f8f9fa;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   color: #333;
 }
+</style>
 
-.article-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+<style scoped>
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 顶部导航栏 */
+.header {
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: bold;
+  color: #42b883;
+  text-decoration: none;
+}
+
+.nav {
+  display: flex;
   gap: 24px;
 }
 
-.article-card {
-  background: #fff;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-  transition: transform 0.2s, box-shadow 0.2s;
-  cursor: pointer;
-}
-
-.article-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
-}
-
-.card-cover {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-}
-
-.card-content {
-  padding: 16px;
-}
-
-.card-category {
-  display: inline-block;
-  padding: 2px 10px;
-  background: #e8f5e9;
-  color: #42b883;
-  border-radius: 12px;
-  font-size: 12px;
-  margin-bottom: 8px;
-}
-
-.card-title {
-  font-size: 18px;
-  margin-bottom: 8px;
-  color: #222;
-}
-
-.card-summary {
-  font-size: 14px;
+.nav a {
   color: #666;
-  line-height: 1.6;
-  margin-bottom: 12px;
+  text-decoration: none;
+  font-size: 15px;
+  transition: color 0.2s;
+  padding: 8px 0;
+  border-bottom: 2px solid transparent;
 }
 
-.card-date {
-  font-size: 12px;
-  color: #999;
+.nav a:hover {
+  color: #42b883;
 }
 
-.empty-tip {
+.nav a.active {
+  color: #42b883;
+  border-bottom-color: #42b883;
+}
+
+/* 主内容区 */
+.main {
+  flex: 1;
+}
+
+/* 页脚 */
+.footer {
+  background: #f5f5f5;
   text-align: center;
+  padding: 20px;
+  font-size: 13px;
   color: #999;
-  padding: 60px 0;
-  font-size: 16px;
 }
 </style>

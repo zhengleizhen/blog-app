@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="560" height="360" viewBox="0 0 560 360">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#42b883"/>
+      <stop offset="100%" stop-color="#34a877"/>
+    </linearGradient>
+    <linearGradient id="shine" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.15)"/>
+      <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+    </linearGradient>
+  </defs>
+  <rect width="560" height="360" fill="url(#bg)" rx="0"/>
+  <rect width="560" height="360" fill="url(#shine)"/>
+  <!-- Vue triangle -->
+  <polygon points="280,70 200,210 240,210 280,140 320,210 360,210" fill="#fff" opacity="0.9"/>
+  <polygon points="280,70 250,190 280,190 310,190 280,70" fill="#35495e" opacity="0.7"/>
+  <text x="280" y="270" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" font-weight="bold" fill="rgba(255,255,255,0.95)">Vue3</text>
+  <text x="280" y="300" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="rgba(255,255,255,0.8)">渐进式 JavaScript 框架</text>
+  <!-- decorative dots -->
+  <circle cx="80" cy="60" r="3" fill="rgba(255,255,255,0.2)"/>
+  <circle cx="120" cy="40" r="2" fill="rgba(255,255,255,0.15)"/>
+  <circle cx="450" cy="80" r="4" fill="rgba(255,255,255,0.15)"/>
+  <circle cx="480" cy="280" r="3" fill="rgba(255,255,255,0.2)"/>
+  <circle cx="100" cy="300" r="2" fill="rgba(255,255,255,0.15)"/>
+</svg>
