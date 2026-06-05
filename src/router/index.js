@@ -7,6 +7,7 @@ const router = createRouter({
     { path: '/', name: 'home', component: Home },
     { path: '/article/:id', name: 'article', component: () => import('../views/ArticleDetail.vue') },
     { path: '/about', name: 'about', component: () => import('../views/About.vue') },
+    { path: '/reactive-demo', name: 'reactiveDemo', component: () => import('../views/ReactiveDemo.vue') },
   ],
 })
 

@@ -16,8 +16,10 @@ const isActive = (path) => {
       <div class="header-inner">
         <RouterLink to="/" class="logo">我的博客</RouterLink>
         <nav class="nav">
+          <!-- 下面两种跳转均可  -->
           <RouterLink to="/" :class="{ active: isActive('/') }">首页</RouterLink>
-          <RouterLink to="/about" :class="{ active: isActive('/about') }">关于</RouterLink>
+          <RouterLink :to="{name:'reactiveDemo'}" :class="{ active: isActive('/reactive-demo') }">响应式示例</RouterLink>
+          <RouterLink :to="{name:'about'}" :class="{ active: isActive('/about') }">关于</RouterLink>
         </nav>
       </div>
     </header>
