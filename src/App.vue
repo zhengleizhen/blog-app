@@ -20,6 +20,8 @@ const isActive = (path) => {
           <RouterLink to="/" :class="{ active: isActive('/') }">首页</RouterLink>
           <RouterLink :to="{name:'reactiveDemo'}" :class="{ active: isActive('/reactive-demo') }">响应式示例</RouterLink>
           <RouterLink :to="{name:'about'}" :class="{ active: isActive('/about') }">关于</RouterLink>
+          <RouterLink :to="{name:'homeView'}" :class="{active: isActive('/home-view')}"> 父传子</RouterLink>
+          <RouterLink :to="{name:'emitsDemo'}" :class="{active: isActive('/emits-demo')}"> 子传父</RouterLink>
         </nav>
       </div>
     </header>
