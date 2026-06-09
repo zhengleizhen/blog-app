@@ -1,6 +1,6 @@
 <script setup>
 import { RouterLink, RouterView, useRoute } from 'vue-router'
-
+import NavBar from './components/NavBar.vue'
 const route = useRoute()
 
 const isActive = (path) => {
@@ -12,19 +12,7 @@ const isActive = (path) => {
 <template>
   <div class="app">
     <!-- 顶部导航栏 -->
-    <header class="header">
-      <div class="header-inner">
-        <RouterLink to="/" class="logo">我的博客</RouterLink>
-        <nav class="nav">
-          <!-- 下面两种跳转均可  -->
-          <RouterLink to="/" :class="{ active: isActive('/') }">首页</RouterLink>
-          <RouterLink :to="{name:'reactiveDemo'}" :class="{ active: isActive('/reactive-demo') }">响应式示例</RouterLink>
-          <RouterLink :to="{name:'about'}" :class="{ active: isActive('/about') }">关于</RouterLink>
-          <RouterLink :to="{name:'homeView'}" :class="{active: isActive('/home-view')}"> 父传子</RouterLink>
-          <RouterLink :to="{name:'emitsDemo'}" :class="{active: isActive('/emits-demo')}"> 子传父</RouterLink>
-        </nav>
-      </div>
-    </header>
+    <NavBar />
 
     <!-- 页面内容 -->
     <main class="main">
