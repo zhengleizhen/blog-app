@@ -1,11 +1,14 @@
 <!-- 文件路径：src/views/HomeView.vue -->
 <script setup>
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed, onMounted, watch } from 'vue'
 import BlogCard from '../components/BlogCard.vue'
 import CategoryFilter from '../components/CategoryFilter.vue'
 
 // 文章数据
 const articles = ref([])
+// 当前选中的分类
+const activeCategory = ref('全部')
+const keyword = ref('')       // 搜索关键词
 const isLoading = ref(true)     // 加载状态
 const error = ref(null)         // 错误信息
 
@@ -35,13 +38,21 @@ const categories = computed(() => {
   return ['全部', ...new Set(cats)]
 })
 
-// 当前选中的分类
-const activeCategory = ref('全部')
-
 // 根据分类过滤文章
 const filteredArticles = computed(() => {
-  if (activeCategory.value === '全部') return articles.value
-  return articles.value.filter(a => a.category === activeCategory.value)
+  let result = articles.value;
+  if (activeCategory.value !== '全部') 
+    result = articles.value.filter(a => a.category === activeCategory.value)
+  
+    // 关键词搜索
+  const kw = keyword.value.trim().toLowerCase()
+  if (kw) {
+    result = result.filter(a =>
+      a.title.toLowerCase().includes(kw) ||
+      a.summary.toLowerCase().includes(kw)
+    )
+  }
+  return result
 })
 
 // 处理子组件发来的分类切换事件
@@ -52,8 +63,12 @@ function handleCategoryChange(cat) {
 
 <template>
   <div class="home">
-    <h2 class="section-title">最新文章</h2>
-    
+    <div class="search-bar">
+      <input v-model="keyword" type="text" 
+      placeholder="搜索文章..." class="search-input"/>
+      <span v-if="keyword" class="clear-btn" @click="keyword = ''">✕</span>
+    </div>
+
     <!-- 分类筛选组件 -->
     <CategoryFilter
       :categories="categories"
@@ -98,12 +113,40 @@ function handleCategoryChange(cat) {
 
 <style scoped>
 .home { max-width: 960px; margin: 0 auto; padding: 20px; }
-.section-title { font-size: 24px; margin-bottom: 20px; }
+
+.search-bar {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 12px 40px 12px 16px;
+  border: 2px solid #eee;
+  border-radius: 8px;
+  font-size: 15px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.search-input:focus {
+  border-color: #42b883;
+}
+
+.clear-btn {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #999;
+  font-size: 18px;
+}
+
 .article-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 24px;
   margin-top: 20px;
 }
-.empty-tip { text-align: center; color: #999; padding: 60px 0; }
 </style>
