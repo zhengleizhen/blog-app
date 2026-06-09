@@ -11,13 +11,13 @@ const isActive = (path) => {
 
 <template>
   <header class="navbar">
-    <a href="/" class="logo">我的博客</a>
+    <RouterLink to="/" class="logo">我的博客</RouterLink>
     <nav>
-      <a href="/">首页</a>
-      <a href="/about">关于</a>
-      <RouterLink :to="{name:'reactiveDemo'}" :class="{ active: isActive('/reactive-demo') }">响应式示例</RouterLink>
-      <RouterLink :to="{name:'homeView'}" :class="{active: isActive('/home-view')}"> 父传子</RouterLink>
-      <RouterLink :to="{name:'emitsDemo'}" :class="{active: isActive('/emits-demo')}"> 子传父</RouterLink>
+      <RouterLink to="/" class="nav-link" :class="{ active: isActive('/') }">首页</RouterLink>
+      <RouterLink to="/about" class="nav-link" :class="{ active: isActive('/about') }">关于</RouterLink>
+      <RouterLink :to="{name:'reactiveDemo'}" class="nav-link" :class="{ active: isActive('/reactive-demo') }">响应式示例</RouterLink>
+      <RouterLink :to="{name:'homeView'}" class="nav-link" :class="{ active: isActive('/home-view') }">父传子</RouterLink>
+      <RouterLink :to="{name:'emitsDemo'}" class="nav-link" :class="{ active: isActive('/emits-demo') }">子传父</RouterLink>
     </nav>
   </header>
 </template>
@@ -39,14 +39,24 @@ const isActive = (path) => {
   text-decoration: none;
 }
 
-nav a {
+nav a,
+nav .nav-link {
   margin-left: 24px;
   text-decoration: none;
   color: #333;
   font-size: 15px;
+  transition: color 0.2s, border-color 0.2s;
+  padding: 4px 0;
+  border-bottom: 2px solid transparent;
 }
 
-nav a:hover {
+nav a:hover,
+nav .nav-link:hover {
   color: #42b883;
+}
+
+nav .nav-link.active {
+  color: #42b883;
+  border-bottom-color: #42b883;
 }
 </style>
