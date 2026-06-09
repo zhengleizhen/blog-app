@@ -10,8 +10,8 @@ defineProps({
 </script>
 
 <template>
-  <RouterLink :to="{ name: 'article', params: { id: id } }" class="card-link">
-    <!-- <RouterLink :to="{ name: 'post', params: { id: id } }" class="card-link"> -->
+  <!-- <RouterLink :to="{ name: 'article', params: { id: id } }" class="card-link"> -->
+    <RouterLink :to="{ name: 'post', params: { id: id } }" class="card-link">
   <div class="card">
     <img :src="cover" :alt="title" class="card-cover">
     <div class="card-content">
