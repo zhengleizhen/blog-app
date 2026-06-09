@@ -7,7 +7,6 @@ const props = defineProps({
 const emit = defineEmits(['update-category'])
 
 function selectCategory(cat) {
-    debugger
   emit('update-category', cat)
 }
 </script>

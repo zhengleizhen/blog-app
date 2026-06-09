@@ -10,6 +10,7 @@ const router = createRouter({
     { path: '/reactive-demo', name: 'reactiveDemo', component: () => import('../views/ReactiveDemo.vue') },
     { path: '/home-view', name: 'homeView', component: () => import('../views/HomeView.vue') },
     { path: '/emits-demo', name: 'emitsDemo', component: () => import('../views/EmitsDemo.vue') },
+    { path: '/post/:id', name: 'post', component: () => import('../views/PostView.vue') },
   ],
 })
 

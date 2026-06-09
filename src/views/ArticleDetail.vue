@@ -5,7 +5,7 @@ import { useRoute } from 'vue-router'
 const route = useRoute()
 
 // 文章数据（与首页保持一致，后续改为 API 加载）
-const articlesData = [
+const articlesData = ref([
   {
     id: 1,
     title: 'Vue3 入门完全指南',
@@ -101,10 +101,11 @@ const user = reactive({
       <p>CSS Grid 让复杂布局变得简单。掌握它，你将不再需要为布局问题头疼。</p>
     `
   }
-]
+])
 
 const article = computed(() => {
-  return articlesData.find(a => a.id === Number(route.params.id))
+  const x1 = articlesData.value.find(a => a.id === parseInt(route.params.id))
+  return x1
 })
 </script>
 
@@ -126,6 +127,7 @@ const article = computed(() => {
 
   <div v-else class="not-found">
     <p class="empty-tip">文章不存在。</p>
+    <p>抱歉，您访问的文章不存在或已被删除。</p>
     <router-link to="/" class="back-link">&larr; 返回首页</router-link>
   </div>
 </template>

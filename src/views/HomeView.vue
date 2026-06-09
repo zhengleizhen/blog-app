@@ -59,7 +59,6 @@ const activeCategory = ref('全部')
 
 // 根据分类过滤文章
 const filteredArticles = computed(() => {
-  debugger
   if (activeCategory.value === '全部') return articles.value
   return articles.value.filter(a => a.category === activeCategory.value)
 })
@@ -91,11 +90,12 @@ function handleCategoryChange(cat) {
       <BlogCard
         v-for="article in filteredArticles"
         :key="article.id"
+        :id="article.id"
         :title="article.title"
         :summary="article.summary"
         :date="article.date"
         :category="article.category"
-        :cover1="article.cover"
+        :cover="article.cover"
       />
     </div>
   </div>

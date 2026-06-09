@@ -1,16 +1,19 @@
 <script setup>
 defineProps({
+  id: Number,
   title: String,
   summary: String,
   date: String,
   category: String,
-  cover1: String
+  cover: String
 })
 </script>
 
 <template>
+  <RouterLink :to="{ name: 'article', params: { id: id } }" class="card-link">
+    <!-- <RouterLink :to="{ name: 'post', params: { id: id } }" class="card-link"> -->
   <div class="card">
-    <img :src="cover1" :alt="title" class="card-cover">
+    <img :src="cover" :alt="title" class="card-cover">
     <div class="card-content">
       <span class="card-category">{{ category }}</span>
       <h3 class="card-title">{{ title }}</h3>
@@ -18,6 +21,7 @@ defineProps({
       <span class="card-date">{{ date }}</span>
     </div>
   </div>
+  </RouterLink>
 </template>
 
 <style scoped>
