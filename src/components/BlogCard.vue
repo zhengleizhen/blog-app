@@ -4,13 +4,13 @@ defineProps({
   summary: String,
   date: String,
   category: String,
-  cover: String
+  cover1: String
 })
 </script>
 
 <template>
   <div class="card">
-    <img :src="cover" :alt="title" class="card-cover">
+    <img :src="cover1" :alt="title" class="card-cover">
     <div class="card-content">
       <span class="card-category">{{ category }}</span>
       <h3 class="card-title">{{ title }}</h3>
