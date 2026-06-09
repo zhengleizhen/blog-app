@@ -16,7 +16,7 @@ async function fetchArticles() {
   isLoading.value = true
   error.value = null
   try {
-    const res = await fetch('/public/posts.json')
+    const res = await fetch('/posts.json')
     //await new Promise(resolve => setTimeout(resolve, 3000)) // 模拟网络延迟
     const data = await res.json()
     articles.value = data
