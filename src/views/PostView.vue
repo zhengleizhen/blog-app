@@ -3,10 +3,13 @@
 import userPosts from '../components/usePosts.js'
 import {ref,computed,onMounted} from 'vue'
 import { useRoute, RouterLink } from 'vue-router'
+import { useFavoriteStore } from '../stores/useFavoriteStore.js'
 
 // useRoute 返回当前路由对象
 const route = useRoute()
 const id = route.params.id
+
+const favoriteStore = useFavoriteStore()
 
 const {
   isLoading,
@@ -41,6 +44,14 @@ console.log('文章 ID：', route.params.id)
       <time>{{ article.date }}</time>
       <!-- v-html 渲染 HTML 字符串 -->
       <div class="content" v-html="article.content"></div>
+      <button
+        type="button"
+        class="fav-btn"
+        :class="{ active: favoriteStore.isFavorite(id) }"
+        @click="favoriteStore.toggleFavorite(id)"
+      >
+        {{ favoriteStore.isFavorite(id) ? '♥ 已收藏' : '♡ 收藏' }}
+      </button>
       <RouterLink to="/" class="back-link">← 返回首页</RouterLink>
     </article>
   </div>
@@ -89,6 +100,33 @@ time {
 
 .content :deep(p) {
   margin-bottom: 12px;
+}
+
+.fav-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 18px;
+  margin-top: 30px;
+  border: 1px solid #42b883;
+  border-radius: 999px;
+  background: #fff;
+  color: #42b883;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.fav-btn:hover {
+  transform: translateY(-1px);
+  background: #f0fbf7;
+}
+
+.fav-btn.active {
+  background: #42b883;
+  color: #fff;
+  border-color: transparent;
+  box-shadow: 0 12px 28px rgba(66, 184, 131, 0.2);
 }
 
 .back-link {
