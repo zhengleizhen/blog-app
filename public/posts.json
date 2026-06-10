@@ -39,7 +39,7 @@
     "title": "Node.js 服务端开发",
     "summary": "用 Express + MongoDB 搭建 RESTful API 服务。",
     "date": "2026-05-01",
-    "category": "JavaScript",
+    "category": "Node.js",
     "cover": "/images/js.svg"
   }
 ]

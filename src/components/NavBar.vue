@@ -1,6 +1,8 @@
 <!-- 文件路径：src/components/NavBar.vue -->
 <script setup>
+import useDarkMode from './useDarkMode'
 import { RouterLink, RouterView, useRoute } from 'vue-router'
+const { isDark, toggleDark } = useDarkMode()
 const route = useRoute()
 const isActive = (path) => {
   if (path === '/') return route.path === '/'
@@ -18,6 +20,9 @@ const isActive = (path) => {
       <RouterLink :to="{name:'reactiveDemo'}" class="nav-link" :class="{ active: isActive('/reactive-demo') }">响应式示例</RouterLink>
       <RouterLink :to="{name:'homeView'}" class="nav-link" :class="{ active: isActive('/home-view') }">父传子</RouterLink>
       <RouterLink :to="{name:'emitsDemo'}" class="nav-link" :class="{ active: isActive('/emits-demo') }">子传父</RouterLink>
+      <button class="dark-mode-toggle" @click="toggleDark">
+        {{ isDark ? '🌞' : '🌙' }}
+      </button>
     </nav>
   </header>
 </template>

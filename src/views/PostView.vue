@@ -1,5 +1,6 @@
 <!-- 文件路径：src/views/PostView.vue -->
 <script setup>
+import userPosts from '../components/usePosts.js'
 import {ref,computed,onMounted} from 'vue'
 import { useRoute, RouterLink } from 'vue-router'
 
@@ -7,25 +8,14 @@ import { useRoute, RouterLink } from 'vue-router'
 const route = useRoute()
 const id = route.params.id
 
-// 所有文章数据（后续章节会抽离到公共模块）
-const articles = ref([])
-
-async function fetchArticles(){
-  try {
-    const res = await fetch('/posts.json')
-    const data = await res.json()
-    articles.value = data
-  }catch(err){
-    console.log('加载文章失败：', err)
-  }
-}
-
-onMounted(() => {
-  fetchArticles()
-})
+const {
+  isLoading,
+  error,
+  getArticleById,
+} = userPosts()
 
 const article = computed(() => {
-  const x1 = articles.value.find(a => a.id === parseInt(id))
+  const x1 = getArticleById(id)
   console.log('找到的文章：', x1)
   return x1
 })
@@ -37,8 +27,9 @@ console.log('文章 ID：', route.params.id)
 
 <template>
   <div class="post-view">
-    <div v-if="!article" class="not-found">
-      <h2>文章未找到</h2>
+    <p v-if="isLoading">加载中...</p>
+    <div v-else-if="!article" class="not-found">
+      <h2>文章未找到{{ error }}</h2>
       <p>抱歉，您访问的文章不存在或已被删除。</p>
       <RouterLink to="/" class="back-link">返回首页</RouterLink>
     </div>

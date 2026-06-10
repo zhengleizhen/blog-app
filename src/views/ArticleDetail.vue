@@ -1,29 +1,20 @@
 <script setup>
+import userPosts from '../components/usePosts.js'
 import { ref, computed, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 
 const route = useRoute()
 
+const {
+  articles,
+  getArticleById
+} = userPosts()
+
 // 文章数据（与首页保持一致，后续改为 API 加载）
-const articlesData = ref([])
-
-async function fetchArticles() {
-  try {
-    const res = await fetch('/posts.json')
-    const data = await res.json()
-    articlesData.value = data
-  } catch (err) {
-    console.error('加载文章失败：', err)
-  }
-}
-
-onMounted(() => {
-  fetchArticles()
-})
+const articlesData = articles
 
 const article = computed(() => {
-  const x1 = articlesData.value.find(a => a.id === parseInt(route.params.id))
-  return x1
+  return getArticleById(route.params.id)
 })
 </script>
 

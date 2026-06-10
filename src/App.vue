@@ -41,6 +41,53 @@ body {
   -moz-osx-font-smoothing: grayscale;
   color: #333;
 }
+
+html.dark body {
+  background: #121212;
+  color: #e8e8e8;
+}
+
+html.dark .navbar {
+  background: #1f1f1f;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.4);
+}
+
+html.dark .logo,
+html.dark .nav-link,
+html.dark .dark-mode-toggle {
+  color: #b7f0c3;
+}
+
+html.dark .nav-link.active {
+  color: #7be0ad;
+  border-bottom-color: #7be0ad;
+}
+
+html.dark .nav-link:hover,
+html.dark .dark-mode-toggle:hover {
+  color: #7be0ad;
+}
+
+.dark-mode-toggle {
+  margin-left: 24px;
+  border: none;
+  background: transparent;
+  color: #333;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 4px 8px;
+  transition: color 0.2s, transform 0.2s;
+}
+
+.dark-mode-toggle:hover {
+  color: #42b883;
+  transform: translateY(-1px);
+}
+
+html.dark .footer {
+  background: #181818;
+  color: #bbb;
+}
 </style>
 
 <style scoped>

@@ -1,64 +1,22 @@
 <!-- 文件路径：src/views/HomeView.vue -->
 <script setup>
+import  userPosts  from '../components/usePosts.js'
 import { ref, computed, onMounted, watch } from 'vue'
 import BlogCard from '../components/BlogCard.vue'
 import CategoryFilter from '../components/CategoryFilter.vue'
 
-// 文章数据
-const articles = ref([])
-// 当前选中的分类
-const activeCategory = ref('全部')
-const keyword = ref('')       // 搜索关键词
-const isLoading = ref(true)     // 加载状态
-const error = ref(null)         // 错误信息
+const {
+  articles,
+  isLoading,
+  error,
+  activeCategory,
+  keyword,
+  categories,
+  filteredArticles,
+  handleCategoryChange,
+  fetchPosts
+} = userPosts()
 
-async function fetchArticles() {
-  isLoading.value = true
-  error.value = null
-  try {
-    const res = await fetch('/posts.json')
-    //await new Promise(resolve => setTimeout(resolve, 3000)) // 模拟网络延迟
-    const data = await res.json()
-    articles.value = data
-  } catch (err) {
-    console.log('加载文章失败：', err)
-    error.value = '加载文章失败，请稍后重试'
-  } finally {
-    isLoading.value = false
-  }
-}
-
-onMounted(() =>{
-  fetchArticles();
-})
-
-// 提取所有分类（去重）
-const categories = computed(() => {
-  const cats = articles.value.map(a => a.category)
-  return ['全部', ...new Set(cats)]
-})
-
-// 根据分类过滤文章
-const filteredArticles = computed(() => {
-  let result = articles.value;
-  if (activeCategory.value !== '全部') 
-    result = articles.value.filter(a => a.category === activeCategory.value)
-  
-    // 关键词搜索
-  const kw = keyword.value.trim().toLowerCase()
-  if (kw) {
-    result = result.filter(a =>
-      a.title.toLowerCase().includes(kw) ||
-      a.summary.toLowerCase().includes(kw)
-    )
-  }
-  return result
-})
-
-// 处理子组件发来的分类切换事件
-function handleCategoryChange(cat) {
-  activeCategory.value = cat
-}
 </script>
 
 <template>
@@ -82,7 +40,7 @@ function handleCategoryChange(cat) {
     <!-- 错误状态 -->
     <p v-else-if="error" class="status-msg error">
       加载失败：{{ error }}
-      <button @click="fetchArticles">重试</button>
+      <button @click="fetchPosts">重试</button>
     </p>
 
     <!-- 空数据状态 -->
