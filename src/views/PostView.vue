@@ -47,10 +47,10 @@ console.log('文章 ID：', route.params.id)
       <button
         type="button"
         class="fav-btn"
-        :class="{ active: favoriteStore.isFavorite(id) }"
-        @click="favoriteStore.toggleFavorite(id)"
+        :class="{ active: favoriteStore.isFavorite(article.id) }"
+        @click="favoriteStore.toggleFavorite(article.id)"
       >
-        {{ favoriteStore.isFavorite(id) ? '♥ 已收藏' : '♡ 收藏' }}
+        {{ favoriteStore.isFavorite(article.id) ? '♥ 已收藏' : '♡ 收藏' }}
       </button>
       <RouterLink to="/" class="back-link">← 返回首页</RouterLink>
     </article>
