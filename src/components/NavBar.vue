@@ -2,6 +2,8 @@
 <script setup>
 import useDarkMode from './useDarkMode'
 import { RouterLink, RouterView, useRoute } from 'vue-router'
+import {useFavoriteStore} from '../stores/useFavoriteStore.js'
+
 const { isDark, toggleDark } = useDarkMode()
 const route = useRoute()
 const isActive = (path) => {
@@ -9,12 +11,17 @@ const isActive = (path) => {
   return route.path.startsWith(path)
 }
 // 导航栏目前只需要展示，后续会加入搜索和暗黑模式切换
+
+const favoriteStore = useFavoriteStore()
 </script>
 
 <template>
   <header class="navbar">
     <RouterLink to="/" class="logo">我的博客</RouterLink>
     <nav>
+      <span class="fav-badge" v-if="favoriteStore.favoriteCount > 0">
+        收藏 {{ favoriteStore.favoriteCount }}
+      </span>
       <RouterLink to="/" class="nav-link" :class="{ active: isActive('/') }">首页</RouterLink>
       <RouterLink to="/about" class="nav-link" :class="{ active: isActive('/about') }">关于</RouterLink>
       <RouterLink :to="{name:'reactiveDemo'}" class="nav-link" :class="{ active: isActive('/reactive-demo') }">响应式示例</RouterLink>
@@ -63,5 +70,12 @@ nav .nav-link:hover {
 nav .nav-link.active {
   color: #42b883;
   border-bottom-color: #42b883;
+}
+.fav-badge {
+  background: #e74c3c;
+  color: #fff;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 13px;
 }
 </style>

@@ -1,12 +1,13 @@
 import {defineStore} from 'pinia'
 import {ref,computed } from 'vue'
 
+const FAVORITES_KEY = 'blog-favorites'
 export const useFavoriteStore = defineStore('favorite',()=>{
     const favoriteIds = ref([])
 
     let saved = null
     try {
-        saved = localStorage.getItem('blog-favorites')
+        saved = localStorage.getItem(FAVORITES_KEY)
         if (saved) {
             favoriteIds.value = JSON.parse(saved)
         }
@@ -32,7 +33,7 @@ export const useFavoriteStore = defineStore('favorite',()=>{
       favoriteIds.value.splice(index, 1)    // 取消收藏
     }
     // 同步到 localStorage（持久化保存）
-    localStorage.setItem('blog-favorites', JSON.stringify(favoriteIds.value))
+    localStorage.setItem(FAVORITES_KEY, JSON.stringify(favoriteIds.value))
   }
 
 
