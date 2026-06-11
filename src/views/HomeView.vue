@@ -27,6 +27,13 @@ const {
       <span v-if="keyword" class="clear-btn" @click="keyword = ''">✕</span>
     </div>
 
+    <div class="tech-summary">
+      <h2>技术说明</h2>
+      <p>本项目使用 Vue 3 和 Vite 搭建，采用组合式 API 和组件化结构来组织页面与逻辑。</p>
+      <p>文章列表数据由 `usePosts.js` 封装加载，支持搜索、分类筛选和加载状态处理。</p>
+      <p>收藏功能由 Pinia 存储 `useFavoriteStore.js` 管理，组件之间通过共享状态实现实时同步。</p>
+    </div>
+
     <!-- 分类筛选组件 -->
     <CategoryFilter
       :categories="categories"
@@ -106,5 +113,25 @@ const {
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 24px;
   margin-top: 20px;
+}
+
+.tech-summary {
+  background: #f9fbfe;
+  border: 1px solid #e5eff9;
+  border-radius: 16px;
+  padding: 18px 20px;
+  margin-bottom: 24px;
+}
+
+.tech-summary h2 {
+  margin: 0 0 10px;
+  font-size: 18px;
+  color: #2f5d9a;
+}
+
+.tech-summary p {
+  margin: 10px 0 0;
+  color: #4a5568;
+  line-height: 1.7;
 }
 </style>

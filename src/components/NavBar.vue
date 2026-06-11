@@ -17,7 +17,10 @@ const favoriteStore = useFavoriteStore()
 
 <template>
   <header class="navbar">
-    <RouterLink to="/" class="logo">我的博客</RouterLink>
+    <div class="logo-block">
+      <RouterLink to="/" class="logo">我的博客</RouterLink>
+      <span class="logo-subtitle">Vue 3 + Vite 技术展示</span>
+    </div>
     <nav>
       <span class="fav-badge" v-if="favoriteStore.favoriteCount > 0">
         收藏 {{ favoriteStore.favoriteCount }}
@@ -77,5 +80,17 @@ nav .nav-link.active {
   padding: 4px 10px;
   border-radius: 12px;
   font-size: 13px;
+}
+
+.logo-block {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.logo-subtitle {
+  font-size: 12px;
+  color: #6b7280;
+  line-height: 1.2;
 }
 </style>

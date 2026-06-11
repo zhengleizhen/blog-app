@@ -39,6 +39,10 @@ console.log('文章 ID：', route.params.id)
 
     <!-- 文章存在，展示完整内容 -->
     <article v-else>
+      <div class="tech-info">
+        <p>本页面通过 `vue-router` 路由参数加载文章详情，数据来源于 `usePosts.js` 中封装的文章仓库。</p>
+        <p>收藏按钮使用 Pinia `useFavoriteStore` 管理状态，支持组件间实时同步收藏数。</p>
+      </div>
       <span class="category-tag">{{ article.category }}</span>
       <h1>{{ article.title }}</h1>
       <time>{{ article.date }}</time>
@@ -134,6 +138,20 @@ time {
   margin-top: 40px;
   color: #42b883;
   text-decoration: none;
+}
+
+.tech-info {
+  background: #f7fbf8;
+  border: 1px solid #d8f0e1;
+  border-radius: 14px;
+  padding: 14px 16px;
+  margin-bottom: 22px;
+  color: #2f6f53;
+}
+
+.tech-info p {
+  margin: 0 0 8px;
+  line-height: 1.7;
 }
 
 .not-found {
