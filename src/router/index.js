@@ -11,6 +11,10 @@ const router = createRouter({
     { path: '/home-view', name: 'homeView', component: () => import('../views/HomeView.vue') },
     { path: '/emits-demo', name: 'emitsDemo', component: () => import('../views/EmitsDemo.vue') },
     { path: '/post/:id', name: 'post', component: () => import('../views/PostView.vue') },
+    { path: '/slot-demo', name: 'slotDemo', component: () => import('../views/SlotDemo.vue') },
+    { path: '/render-demo', name: 'renderDemo', component: () => import('../views/RenderDemo.vue') },
+    { path: '/compiler-demo', name: 'compilerDemo', component: () => import('../views/CompilerDemo.vue') },
+    { path: '/provide-demo', name: 'provideDemo', component: () => import('../views/ProvideDemo.vue') },
   ],
 })
 

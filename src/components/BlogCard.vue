@@ -10,12 +10,16 @@ const props = defineProps({
   cover: String
 })
 
-const favoriteStore = useFavoriteStore()
+//const favoriteStore = useFavoriteStore()
+const {
+        isFavorite,
+        toggleFavorite
+    } = useFavoriteStore()
 
 function handleFavorite(e) {
   e.preventDefault()
   e.stopPropagation()
-  favoriteStore.toggleFavorite(props.id)
+  toggleFavorite(props.id)
 }
 </script>
 
@@ -33,7 +37,7 @@ function handleFavorite(e) {
       </div>
     </RouterLink>
     <button type="button" class="fav-btn" @click="handleFavorite">
-      {{ favoriteStore.isFavorite(props.id) ? '♥' : '♡' }}
+      {{ isFavorite(props.id) ? '♥' : '♡' }}
     </button>
   </div>
 </template>

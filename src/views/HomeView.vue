@@ -32,6 +32,11 @@ const {
       <p>本项目使用 Vue 3 和 Vite 搭建，采用组合式 API 和组件化结构来组织页面与逻辑。</p>
       <p>文章列表数据由 `usePosts.js` 封装加载，支持搜索、分类筛选和加载状态处理。</p>
       <p>收藏功能由 Pinia 存储 `useFavoriteStore.js` 管理，组件之间通过共享状态实现实时同步。</p>
+      <p class="demo-link">
+        📚 学习示例：<router-link to="/slot-demo">插槽</router-link> |
+                    <router-link to="/render-demo">render()</router-link> |
+                    <router-link to="/compiler-demo">compilerOptions</router-link> |
+                    <router-link to="/provide-demo">provide/inject</router-link></p>
     </div>
 
     <!-- 分类筛选组件 -->
@@ -133,5 +138,11 @@ const {
   margin: 10px 0 0;
   color: #4a5568;
   line-height: 1.7;
+}
+
+.demo-link a {
+  color: #42b883;
+  font-weight: bold;
+  text-decoration: underline;
 }
 </style>

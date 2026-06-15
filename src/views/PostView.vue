@@ -9,7 +9,11 @@ import { useFavoriteStore } from '../stores/useFavoriteStore.js'
 const route = useRoute()
 const id = route.params.id
 
-const favoriteStore = useFavoriteStore()
+//const favoriteStore = useFavoriteStore()
+const {
+        isFavorite,
+        toggleFavorite
+    } = useFavoriteStore()
 
 const {
   isLoading,
@@ -51,10 +55,10 @@ console.log('文章 ID：', route.params.id)
       <button
         type="button"
         class="fav-btn"
-        :class="{ active: favoriteStore.isFavorite(article.id) }"
-        @click="favoriteStore.toggleFavorite(article.id)"
+        :class="{ active: isFavorite(article.id) }"
+        @click="toggleFavorite(article.id)"
       >
-        {{ favoriteStore.isFavorite(article.id) ? '♥ 已收藏' : '♡ 收藏' }}
+        {{ isFavorite(article.id) ? '♥ 已收藏' : '♡ 收藏' }}
       </button>
       <RouterLink to="/" class="back-link">← 返回首页</RouterLink>
     </article>
