@@ -15,6 +15,7 @@ const router = createRouter({
     { path: '/render-demo', name: 'renderDemo', component: () => import('../views/RenderDemo.vue') },
     { path: '/compiler-demo', name: 'compilerDemo', component: () => import('../views/CompilerDemo.vue') },
     { path: '/provide-demo', name: 'provideDemo', component: () => import('../views/ProvideDemo.vue') },
+    { path: '/mixins-demo', name: 'mixinsDemo', component: () => import('../views/MixinsDemo.vue') },
   ],
 })
 

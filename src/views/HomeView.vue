@@ -1,7 +1,6 @@
 <!-- 文件路径：src/views/HomeView.vue -->
 <script setup>
 import  userPosts  from '../components/usePosts.js'
-import { ref, computed, onMounted, watch } from 'vue'
 import BlogCard from '../components/BlogCard.vue'
 import CategoryFilter from '../components/CategoryFilter.vue'
 
@@ -33,10 +32,11 @@ const {
       <p>文章列表数据由 `usePosts.js` 封装加载，支持搜索、分类筛选和加载状态处理。</p>
       <p>收藏功能由 Pinia 存储 `useFavoriteStore.js` 管理，组件之间通过共享状态实现实时同步。</p>
       <p class="demo-link">
-        📚 学习示例：<router-link to="/slot-demo">插槽</router-link> |
+         学习示例：<router-link to="/slot-demo">插槽</router-link> |
                     <router-link to="/render-demo">render()</router-link> |
                     <router-link to="/compiler-demo">compilerOptions</router-link> |
-                    <router-link to="/provide-demo">provide/inject</router-link></p>
+                    <router-link to="/provide-demo">provide/inject</router-link> |
+                    <router-link to="/mixins-demo">mixins</router-link></p>
     </div>
 
     <!-- 分类筛选组件 -->
