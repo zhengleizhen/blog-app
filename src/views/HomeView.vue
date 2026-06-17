@@ -36,7 +36,9 @@ const {
                     <router-link to="/render-demo">render()</router-link> |
                     <router-link to="/compiler-demo">compilerOptions</router-link> |
                     <router-link to="/provide-demo">provide/inject</router-link> |
-                    <router-link to="/mixins-demo">mixins</router-link></p>
+                    <router-link to="/mixins-demo">mixins</router-link> |
+                    <router-link to="/extends-demo">extends</router-link> |
+                    <router-link to="/inherit-attrs-demo">inheritAttrs</router-link></p>
     </div>
 
     <!-- 分类筛选组件 -->

@@ -16,6 +16,8 @@ const router = createRouter({
     { path: '/compiler-demo', name: 'compilerDemo', component: () => import('../views/CompilerDemo.vue') },
     { path: '/provide-demo', name: 'provideDemo', component: () => import('../views/ProvideDemo.vue') },
     { path: '/mixins-demo', name: 'mixinsDemo', component: () => import('../views/MixinsDemo.vue') },
+    { path: '/extends-demo', name: 'extendsDemo', component: () => import('../views/ExtendsDemo.vue') },
+    { path: '/inherit-attrs-demo', name: 'inheritAttrsDemo', component: () => import('../views/InheritAttrsDemo.vue') },
   ],
 })
 
