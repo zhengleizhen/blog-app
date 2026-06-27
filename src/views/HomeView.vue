@@ -38,7 +38,11 @@ const {
                     <router-link to="/provide-demo">provide/inject</router-link> |
                     <router-link to="/mixins-demo">mixins</router-link> |
                     <router-link to="/extends-demo">extends</router-link> |
-                    <router-link to="/inherit-attrs-demo">inheritAttrs</router-link></p>
+                    <router-link to="/inherit-attrs-demo">inheritAttrs</router-link> |
+                    <router-link to="/components-demo">components</router-link> |
+                    <router-link to="/directives-demo">directives</router-link> |
+                    <router-link to="/transition-demo">动画</router-link> |
+                    <router-link to="/blog">子路由示例</router-link></p>
     </div>
 
     <!-- 分类筛选组件 -->

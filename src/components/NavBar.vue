@@ -1,7 +1,7 @@
 <!-- 文件路径：src/components/NavBar.vue -->
 <script setup>
 import useDarkMode from './useDarkMode'
-import { RouterLink, RouterView, useRoute } from 'vue-router'
+import { RouterLink, useRoute } from 'vue-router'
 import {useFavoriteStore} from '../stores/useFavoriteStore.js'
 
 const { isDark, toggleDark } = useDarkMode()
@@ -30,6 +30,7 @@ const favoriteStore = useFavoriteStore()
       <RouterLink :to="{name:'reactiveDemo'}" class="nav-link" :class="{ active: isActive('/reactive-demo') }">响应式示例</RouterLink>
       <RouterLink :to="{name:'homeView'}" class="nav-link" :class="{ active: isActive('/home-view') }">父传子</RouterLink>
       <RouterLink :to="{name:'emitsDemo'}" class="nav-link" :class="{ active: isActive('/emits-demo') }">子传父</RouterLink>
+      <RouterLink to="/blog" class="nav-link" :class="{ active: isActive('/blog') }">博客管理</RouterLink>
       <button class="dark-mode-toggle" @click="toggleDark">
         {{ isDark ? '🌞' : '🌙' }}
       </button>
