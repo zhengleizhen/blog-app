@@ -35,8 +35,25 @@ const router = createRouter({
 
         // ① 路由参数（动态路径）：/blog/edit/123
         { path: 'edit/:id', name: 'blogEdit', component: () => import('../views/BlogEdit.vue') },
-        // ② 可选参数：/blog/view/456 或 /blog/view
+        // ② 两个路由参数：/blog/edit/789/draft  （:id 和 :type）
+        { path: 'edit/:id/:type', name: 'blogEditTwoParams', component: () => import('../views/BlogEdit.vue') },
+        // ③ 可选参数：/blog/view/456 或 /blog/view
         { path: 'view/:id?', name: 'blogView', component: () => import('../views/BlogEdit.vue') },
+
+        // ④ props 传参（boolean 模式）：路由参数自动变成组件 props
+        { 
+          path: 'detail/:id/:category', 
+          name: 'blogDetail', 
+          component: () => import('../views/BlogDetail.vue'), 
+          props: true 
+        },
+        // ⑤ props 传参（function 模式）：自定义映射
+        { 
+          path: 'detail-fn/:id', 
+          name: 'blogDetailFn', 
+          component: () => import('../views/BlogDetail.vue'),
+          props: (route) => ({ id: route.params.id, category: '自定义分类' }) 
+        },
       ]
     },
   ],

@@ -2,8 +2,11 @@
   <div class="blog-edit">
     <h3>编辑文章</h3>
     <div class="info">
-      <p><strong>文章 ID（路由参数）：</strong>{{ route.params.id }}</p>
-      <p><strong>来源（query 参数）：</strong>{{ route.query.from || '无' }}</p>
+      <p><strong>文章 ID：</strong>{{ route.params.id || '无' }}</p>
+      <p v-if="route.params.type"><strong>文章类型：</strong>{{ route.params.type }}</p>
+      <p v-if="route.query.from"><strong>来源：</strong>{{ route.query.from }}</p>
+      <p v-if="route.query.tab"><strong>Tab：</strong>{{ route.query.tab }}</p>
+      <p v-if="route.query.source"><strong>跳转方式：</strong>{{ route.query.source }}</p>
     </div>
     <form @submit.prevent="submit">
       <input v-model="title" placeholder="标题" class="input" />
