@@ -34,7 +34,7 @@ const router = createRouter({
         { path: 'drafts', name: 'blogDrafts', component: () => import('../views/BlogDrafts.vue') },
 
         // ① 路由参数（动态路径）：/blog/edit/123
-        { path: 'edit/:id', name: 'blogEdit', component: () => import('../views/BlogEdit.vue') },
+        { path: 'edit/:id?', name: 'blogEdit', component: () => import('../views/BlogEdit.vue') },
         // ② 两个路由参数：/blog/edit/789/draft  （:id 和 :type）
         { path: 'edit/:id/:type', name: 'blogEditTwoParams', component: () => import('../views/BlogEdit.vue') },
         // ③ 可选参数：/blog/view/456 或 /blog/view

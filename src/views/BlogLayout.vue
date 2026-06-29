@@ -7,16 +7,22 @@
       <router-link to="/blog/list" class="nav-link">文章列表</router-link>
       <router-link to="/blog/create" class="nav-link">写文章</router-link>
       <router-link to="/blog/drafts" class="nav-link">草稿箱</router-link>
-      <router-link to="/blog/edit/321" class="nav-link">编辑（1个路由参数）</router-link>
+      <router-link to="/blog/edit/123" class="nav-link">编辑（1个路由参数）</router-link>
       <router-link to="/blog/edit/789/draft" class="nav-link">编辑（2个路由参数）</router-link>
-      <router-link :to="{ path: '/blog/edit/456', query: { from: 'list', tab: 'content' } }" class="nav-link">
+      <router-link :to="{ path: '/blog/view/456', query: { from: 'list', tab: 'content' } }" class="nav-link">
         编辑（query 传参）
       </router-link>
       <router-link to="/blog/detail/999/technology" class="nav-link">
         详情（props: true）
       </router-link>
       <router-link :to="{ name: 'blogDetailFn', params: { id: 888 } }" class="nav-link">
-        详情（props 函数）
+        详情（props 函数1）
+      </router-link>
+      <router-link :to="{ path: '/blog/detail-fn/666' }" class="nav-link">
+        详情（props 函数2）
+      </router-link>
+      <router-link to="/blog/detail-fn/999" class="nav-link">
+        详情（props 函数3）
       </router-link>
       <button class="nav-btn" @click="goBack">← 返回</button>
     </nav>
