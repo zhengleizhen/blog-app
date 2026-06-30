@@ -1,35 +1,37 @@
 import {ref, computed, onMounted} from 'vue'
-
 export default function usePosts() {
   const articles = ref([])
   const isLoading = ref(true)
   const error = ref(null)
   const activeCategory = ref('全部')
-  const keyword = ref('')       // 搜索关键词
+  const keyword = ref('') //搜索关键词
 
-  //读取文章所有数据
+  //读取所有文章所有文章
   async function fetchPosts(){
-    isLoading.value = true
-    error.value = null
+    isLoading.value = true;
+    error.value = null;
     try {
-      const res = await fetch('/posts.json')
-      articles.value = await res.json()
+        const res = await fetch('/posts.json')
+        articles.value = await res.json()
     }catch(err){
-      error.value = '加载文章失败'
+        error.value = '加载文章失败'
     }finally{
-      isLoading.value = false
+        isLoading.value = false
     }
   }
 
+  onMounted(()=>{
+    fetchPosts();
+  })
+
   function getArticleById(id){
-    const x1 = articles.value.find(a => a.id === parseInt(id))
-    console.log('找到的文章：', x1)
-    return x1
+    const art = articles.value.find(x=>x.id === parseInt(id))
+    return art;
   }
 
-  // 切换分类
-  function handleCategoryChange(cat) {
-    activeCategory.value = cat
+  //切换分类
+  function handleCategoryChange(cat){
+    activeCategory.value = cat;
   }
 
   //获取所有分类
@@ -38,36 +40,30 @@ export default function usePosts() {
     return ['全部', ...cats]
   })
 
-  const filteredArticles = computed(() => {
+  const filteredArticles = computed(()=>{
     let result = articles.value;
-    //根据分类筛选
-    if (activeCategory.value !== '全部')
-      result = articles.value.filter(a => a.category === activeCategory.value)
-    //根据关键词筛选
-    if (keyword.value.trim()) {
-        const kw = keyword.value.trim().toLowerCase();  
-        result = result.filter(a => 
-          a.title.toLowerCase().includes(kw) || 
-          a.summary.toLowerCase().includes(kw)
-        )
+    //先根据选择的分类筛选
+    if(activeCategory.value != '全部'){
+      result = articles.value.filter(x=>x.category === activeCategory.value)
     }
-    return result
+    //根据关键词筛选
+    let kw = keyword.value.trim().toLowerCase();
+    if(kw){
+      result = result.filter(x=>x.title.includes(kw) || x.summary.toLowerCase().includes(kw))
+    }
+    return result;
   })
 
-  onMounted(()=>{
-    fetchPosts();
-  })
-
-  return {
-    articles ,
-    getArticleById,
+  return{
+    articles,
     isLoading,
     error,
     activeCategory,
     keyword,
-    categories,
-    filteredArticles,
+    fetchPosts,
+    getArticleById,
     handleCategoryChange,
-    fetchPosts
+    categories,
+    filteredArticles
   }
 }

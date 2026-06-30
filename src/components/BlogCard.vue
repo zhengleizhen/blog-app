@@ -2,8 +2,8 @@
 import { useFavoriteStore } from '../stores/useFavoriteStore.js'
 
 const props = defineProps({
-  id: Number,
-  title: String,
+  id: { type : Number, required:true},
+  title: {type : String},
   summary: String,
   date: String,
   category: String,

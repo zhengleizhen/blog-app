@@ -1,7 +1,15 @@
 <script setup>
 const props = defineProps({
-  categories: { type: Array, required: true },
-  activeCategory: { type: String, required: true }
+  categories: 
+  { 
+    type: Array, 
+    required: true 
+  },
+  activeCategory: 
+  { 
+    type: String, 
+    required: true 
+  }
 })
 
 const emit = defineEmits(['update-category'])

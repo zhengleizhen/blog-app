@@ -1,19 +1,20 @@
 <!-- 文件路径：src/views/HomeView.vue -->
 <script setup>
-import  userPosts  from '../components/usePosts.js'
+import userPosts from '../components/usePosts.js'
 import BlogCard from '../components/BlogCard.vue'
 import CategoryFilter from '../components/CategoryFilter.vue'
 
 const {
-  articles,
-  isLoading,
-  error,
-  activeCategory,
-  keyword,
-  categories,
-  filteredArticles,
-  handleCategoryChange,
-  fetchPosts
+    articles,
+    isLoading,
+    error,
+    activeCategory,
+    keyword,
+    fetchPosts,
+    getArticleById,
+    handleCategoryChange,
+    categories,
+    filteredArticles
 } = userPosts()
 
 </script>
@@ -42,7 +43,8 @@ const {
                     <router-link to="/components-demo">components</router-link> |
                     <router-link to="/directives-demo">directives</router-link> |
                     <router-link to="/transition-demo">动画</router-link> |
-                    <router-link to="/blog">子路由示例</router-link></p>
+                    <router-link to="/blog">子路由示例</router-link>
+        </p>
     </div>
 
     <!-- 分类筛选组件 -->
@@ -67,7 +69,7 @@ const {
     </p>
 
     <!-- 空状态 -->
-    <p v-if="filteredArticles.length === 0" class="empty-tip">
+    <p v-else-if="filteredArticles.length === 0" class="empty-tip">
       该分类下暂无文章
     </p>
 
