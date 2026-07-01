@@ -8,7 +8,7 @@ const router = createRouter({
     { path: '/', name: 'home', component: Home },
     { path: '/article/:id', name: 'article', component: () => import('../views/ArticleDetail.vue') },
     { path: '/about', name: 'about', component: () => import('../views/About.vue') },
-    { path: '/reactive-demo', name: 'reactiveDemo', component: () => import('../views/ReactiveDemo.vue') },
+    { path: '/reactive-demo', name: 'reactiveDemo', component: () => import('../views/ReactiveWatchDemo.vue') },
     { path: '/home-view', name: 'homeView', component: () => import('../views/HomeView.vue') },
     { path: '/emits-demo', name: 'emitsDemo', component: () => import('../views/EmitsDemo.vue') },
     { path: '/post/:id', name: 'post', component: () => import('../views/PostView.vue') },
