@@ -46,6 +46,7 @@ const {
                     <router-link to="/transition-demo">动画</router-link> |
                     <router-link to="/teleport-demo">Teleport</router-link> |
                     <router-link to="/expose-demo">defineExpose</router-link> |
+                    <router-link to="/async-demo">异步组件</router-link> |
                     <router-link to="/blog">子路由示例</router-link>
         </p>
     </div>
