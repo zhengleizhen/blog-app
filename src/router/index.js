@@ -22,6 +22,8 @@ const router = createRouter({
     { path: '/components-demo', name: 'componentsDemo', component: () => import('../views/ComponentsDemo.vue') },
     { path: '/directives-demo', name: 'directivesDemo', component: () => import('../views/DirectivesDemo.vue') },
     { path: '/transition-demo', name: 'transitionDemo', component: () => import('../views/TransitionDemo.vue') },
+    { path: '/teleport-demo', name: 'teleportDemo', component: () => import('../views/TeleportDemo.vue') },
+    { path: '/expose-demo', name: 'exposeDemo', component: () => import('../views/ExposeDemo.vue') },
 
     // 子路由（嵌套路由 + 传参示例）
     {

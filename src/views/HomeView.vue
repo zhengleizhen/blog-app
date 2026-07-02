@@ -44,6 +44,8 @@ const {
                     <router-link to="/components-demo">components</router-link> |
                     <router-link to="/directives-demo">directives</router-link> |
                     <router-link to="/transition-demo">动画</router-link> |
+                    <router-link to="/teleport-demo">Teleport</router-link> |
+                    <router-link to="/expose-demo">defineExpose</router-link> |
                     <router-link to="/blog">子路由示例</router-link>
         </p>
     </div>
