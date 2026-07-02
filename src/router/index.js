@@ -27,6 +27,7 @@ const router = createRouter({
     { path: '/async-demo', name: 'asyncDemo', component: () => import('../views/AsyncDemo.vue') },
     { path: '/lifecycle-demo', name: 'lifecycleDemo', component: () => import('../views/LifecycleDemo.vue') },
     { path: '/shallow-demo', name: 'shallowDemo', component: () => import('../views/ShallowDemo.vue') },
+    { path: '/toref-demo', name: 'torefDemo', component: () => import('../views/ToRefDemo.vue') },
 
     // 子路由（嵌套路由 + 传参示例）
     {

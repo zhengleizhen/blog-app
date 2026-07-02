@@ -49,6 +49,7 @@ const {
                     <router-link to="/async-demo">异步组件</router-link> |
                     <router-link to="/lifecycle-demo">生命周期</router-link> |
                     <router-link to="/shallow-demo">浅层响应</router-link> |
+                    <router-link to="/toref-demo">toRefs</router-link> |
                     <router-link to="/blog">子路由示例</router-link>
         </p>
     </div>
