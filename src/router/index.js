@@ -30,6 +30,7 @@ const router = createRouter({
     { path: '/toref-demo', name: 'torefDemo', component: () => import('../views/ToRefDemo.vue') },
     { path: '/attrs-demo', name: 'attrsDemo', component: () => import('../views/AttrsDemo.vue') },
     { path: '/computed-demo', name: 'computedDemo', component: () => import('../views/ComputedDemo.vue') },
+    { path: '/composable-demo', name: 'composableDemo', component: () => import('../views/ComposableDemo.vue') },
 
     // 子路由（嵌套路由 + 传参示例）
     {
