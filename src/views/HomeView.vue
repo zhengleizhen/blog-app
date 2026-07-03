@@ -51,6 +51,7 @@ const {
                     <router-link to="/shallow-demo">浅层响应</router-link> |
                     <router-link to="/toref-demo">toRefs</router-link> |
                     <router-link to="/attrs-demo">useAttrs</router-link> |
+                    <router-link to="/computed-demo">computed</router-link> |
                     <router-link to="/blog">子路由示例</router-link>
         </p>
     </div>
