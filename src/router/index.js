@@ -29,6 +29,7 @@ const router = createRouter({
     { path: '/shallow-demo', name: 'shallowDemo', component: () => import('../views/ShallowDemo.vue') },
     { path: '/toref-demo', name: 'torefDemo', component: () => import('../views/ToRefDemo.vue') },
     { path: '/attrs-demo', name: 'attrsDemo', component: () => import('../views/AttrsDemo.vue') },
+    { path: '/computed-demo', name: 'computedDemo', component: () => import('../views/ComputedDemo.vue') },
 
     // 子路由（嵌套路由 + 传参示例）
     {

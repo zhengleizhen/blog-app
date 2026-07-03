@@ -15,4 +15,8 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url))
     },
   },
+  server: {
+    port: 5174,        // 固定端口
+    strictPort: true,  // 端口被占用时直接报错，不自动找下一个
+  },
 })
