@@ -32,6 +32,7 @@ const router = createRouter({
     { path: '/computed-demo', name: 'computedDemo', component: () => import('../views/ComputedDemo.vue') },
     { path: '/composable-demo', name: 'composableDemo', component: () => import('../views/ComposableDemo.vue') },
     { path: '/vmodel-demo', name: 'vmodelDemo', component: () => import('../views/VModelDemo.vue') },
+    { path: '/ref-demo', name: 'refDemo', component: () => import('../views/RefDemo.vue') },
 
     // 子路由（嵌套路由 + 传参示例）
     {

@@ -54,6 +54,7 @@ const {
                     <router-link to="/computed-demo">computed</router-link> |
                     <router-link to="/composable-demo">composables</router-link> |
                     <router-link to="/vmodel-demo">v-model/defineModel</router-link> |
+                    <router-link to="/ref-demo">模板引用 ref</router-link> |
                     <router-link to="/blog">子路由示例</router-link>
         </p>
     </div>
