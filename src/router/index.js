@@ -31,6 +31,7 @@ const router = createRouter({
     { path: '/attrs-demo', name: 'attrsDemo', component: () => import('../views/AttrsDemo.vue') },
     { path: '/computed-demo', name: 'computedDemo', component: () => import('../views/ComputedDemo.vue') },
     { path: '/composable-demo', name: 'composableDemo', component: () => import('../views/ComposableDemo.vue') },
+    { path: '/vmodel-demo', name: 'vmodelDemo', component: () => import('../views/VModelDemo.vue') },
 
     // 子路由（嵌套路由 + 传参示例）
     {
