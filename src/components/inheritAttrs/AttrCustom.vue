@@ -14,7 +14,7 @@
 <script>
 export default {
   // 关闭自动透传
-  inheritAttrs: true, // 这是默认值，可以省略
+  inheritAttrs: false,  // 关闭自动透传
 }
 </script>
 

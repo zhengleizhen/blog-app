@@ -9,7 +9,7 @@
 
 <script setup>
 // .number 修饰符演示 — 返回数字类型
-const modelValue = defineModel()
+const modelValue = defineModel('number')
 </script>
 
 <style scoped>

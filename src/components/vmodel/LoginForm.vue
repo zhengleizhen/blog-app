@@ -3,8 +3,8 @@
     <div class="field">
       <label>用户名</label>
       <input
-        :value="username"
-        @input="username = $event.target.value"
+        :value="userModel"
+        @input="userModel = $event.target.value"
         placeholder="请输入用户名"
       />
     </div>
@@ -12,8 +12,8 @@
       <label>密码</label>
       <input
         type="password"
-        :value="password"
-        @input="password = $event.target.value"
+        :value="pwdModel"
+        @input="pwdModel = $event.target.value"
         placeholder="请输入密码"
       />
     </div>
@@ -22,8 +22,8 @@
 
 <script setup>
 // 一个组件两个 v-model
-const username = defineModel('username')
-const password = defineModel('password')
+const userModel = defineModel('username')
+const pwdModel = defineModel('password')
 </script>
 
 <style scoped>

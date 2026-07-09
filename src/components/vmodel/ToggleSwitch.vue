@@ -24,8 +24,9 @@ const modelValue = defineModel()
   position: relative;
   transition: background 0.3s;
   padding: 0;
+  display: block;
 }
-.toggle.active { background: #42b883; }
+.toggle.active { background: #42b883 !important; }
 .toggle-dot {
   position: absolute;
   top: 3px;

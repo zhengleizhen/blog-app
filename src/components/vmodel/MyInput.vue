@@ -10,7 +10,13 @@
 <script setup>
 // 最简单的 v-model 子组件
 const modelValue = defineModel()
-defineProps({ placeholder: String })
+const props = defineProps({
+  placeholder: {
+    type: String,
+    default: '请输入...',
+    required: false,
+  }
+})
 </script>
 
 <style scoped>

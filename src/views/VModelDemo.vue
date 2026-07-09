@@ -31,10 +31,10 @@ model.value = newValue  // 自动 emit update:modelValue
     <h2>3. 一个组件多个 v-model</h2>
     <p class="desc">一个组件可以同时绑定多个值，比如登录表单</p>
     <div class="demo-box">
-      <LoginForm v-model:username="loginForm.username" v-model:password="loginForm.password" />
+      <LoginForm v-model:username="form.user" v-model:password="form.pwd" />
       <div class="form-result">
-        <p>用户名：<strong>{{ loginForm.username }}</strong></p>
-        <p>密码：<strong>{{ loginForm.password ? '••••••' : '（空）' }}</strong></p>
+        <p>用户名：<strong>{{ form.user }}</strong></p>
+        <p>密码：<strong>{{ form.pwd ? '••••••' : '（空）' }}</strong></p>
       </div>
       <p class="tip">两个输入框分别用 v-model:username 和 v-model:password 双向绑定</p>
     </div>
@@ -45,7 +45,7 @@ model.value = newValue  // 自动 emit update:modelValue
     <div class="demo-box">
       <div class="modifier-row">
         <label>.number</label>
-        <NumberInput v-model.number="modifierNum" />
+        <NumberInput v-model:number="modifierNum" />
         <span>类型：{{ typeof modifierNum }}，值：{{ modifierNum }}</span>
       </div>
       <div class="modifier-row">
@@ -134,10 +134,10 @@ import RatingStars from '../components/vmodel/RatingStars.vue'
 const name = ref('')
 
 // ==================== 3. 多个 v-model ====================
-const loginForm = ref({ username: '', password: '' })
+const form = ref({ user: '', pwd: '' })
 
 // ==================== 4. 修饰符 ====================
-const modifierNum = ref(0)
+const modifierNum = ref('')
 const modifierText = ref('')
 const modifierUpper = ref('')
 
